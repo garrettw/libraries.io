@@ -1,6 +1,5 @@
 module PackageManager
   class Drupal < Base
-    BIBLIOTHECARY_SUPPORT = true
     URL = 'https://www.drupal.org'
     COLOR = '#4F5D95'
 
@@ -9,7 +8,7 @@ module PackageManager
     end
 
     def self.project_names
-      get_html("https://www.drupal.org/project/project_module/index").css('.project-list tbody th').map{|th| th.css('a').first.try(:text) }
+      get_html("https://www.drupal.org/project/project_module/index").css('.view-project-index .view-content li').map{|li| li.css('a').first.try(:text) }
     end
 
     def self.recent_names
